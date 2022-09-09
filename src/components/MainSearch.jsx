@@ -12,7 +12,6 @@ export const MainSearch = () => {
   let [loading, setLoading] = useState(true);
   let [error, setError] = useState(false);
   let [show, setShow] = useState(false);
-  //   let now  = Moment().format("DD-MM-YYYY hh:mm")
   const baseEndpoint = `https://api.openweathermap.org/data/2.5/forecast?q=`;
   //   const baseEndpoint = `https://api.openweathermap.org/data/2.5/weather?q=`;
 
@@ -119,7 +118,7 @@ export const MainSearch = () => {
           </Row>
           <Col xs={6} className="mx-auto my-5 text-center">
             <Button onClick={() => setShow(!show)} variant="outline-light">
-              See Forecast
+              See Tomorrow Forecast
             </Button>
           </Col>
           {show && (
