@@ -71,7 +71,7 @@ export const MainSearch = () => {
       <Col xs={6} className="mx-auto my-5">
         <h1 className="text-center">Weather App</h1>
       </Col>
-      <Col xs={6} className="mx-auto my-4">
+      <Col xs={11} md={6} className="mx-auto my-4">
         <Form onSubmit={handleSubmit}>
           <Form.Control
             id="myForm"
@@ -86,24 +86,30 @@ export const MainSearch = () => {
       {error && <Error />}
       {city && (
         <>
-          <Row className=" mx-auto myContainer w-50">
-            <Col md={6} className="my-5 text-center">
-              <img
-                src={"http://openweathermap.org/img/w/" + city.list[0].weather[0].icon + ".png"}
-                alt={city.list[0].weather[0].description}
-              />
-              <h2>
-                {city.city.name}, {city.city.country}
-              </h2>
-              <p className="fs-1">{city.list[0].main.temp} °C</p>
-            </Col>
-            <Col className="mx-auto my-5 pt-4">
-              <p className="fs-2">
-                <BiUpArrow className="text-warning" /> {city.list[0].main.temp_max} °C
-              </p>
-              <p className="fs-2">
-                <BiDownArrow className="text-primary" /> {city.list[0].main.temp_min} °C
-              </p>
+          <Row>
+            <Col
+              xs={11}
+              md={6}
+              className="my-4 text-center d-flex myContainer p-3 justify-content-around mx-auto"
+            >
+              <div>
+                <img
+                  src={"http://openweathermap.org/img/w/" + city.list[0].weather[0].icon + ".png"}
+                  alt={city.list[0].weather[0].description}
+                />
+                <h2>
+                  {city.city.name}, {city.city.country}
+                </h2>
+                <p className="fs-1">{city.list[0].main.temp} °C</p>
+              </div>
+              <div className="mt-4">
+                <p className="fs-2">
+                  <BiUpArrow className="text-warning" /> {city.list[0].main.temp_max} °C
+                </p>
+                <p className="fs-2">
+                  <BiDownArrow className="text-primary" /> {city.list[0].main.temp_min} °C
+                </p>
+              </div>
             </Col>
           </Row>
           <Row className="justify-content-center text-center my-5">
@@ -128,78 +134,100 @@ export const MainSearch = () => {
                   {city.list[6].dt_txt}
                 </Moment>
               </Col>
-              <Row className=" mx-auto myContainer w-50 mb-5">
-                <Col md={6} className="my-5 text-center">
-                  <img
-                    src={"http://openweathermap.org/img/w/" + city.list[6].weather[0].icon + ".png"}
-                    alt={city.list[6].weather[0].description}
-                  />
-                  <h2>
-                    {city.city.name}, {city.city.country}
-                  </h2>
-                  <p className="fs-1">{city.list[6].main.temp} °C</p>
-                </Col>
-                <Col className="mx-auto my-5 pt-4">
-                  <p className="fs-2">
-                    <BiUpArrow className="text-warning" /> {city.list[6].main.temp_max} °C
-                  </p>
-                  <p className="fs-2">
-                    <BiDownArrow className="text-primary" /> {city.list[6].main.temp_min} °C
-                  </p>
+              <Row>
+                <Col
+                  xs={11}
+                  md={6}
+                  className="my-4 text-center d-flex myContainer p-3 justify-content-around mx-auto"
+                >
+                  <div>
+                    <img
+                      src={
+                        "http://openweathermap.org/img/w/" + city.list[6].weather[0].icon + ".png"
+                      }
+                      alt={city.list[6].weather[0].description}
+                    />
+                    <h2>
+                      {city.city.name}, {city.city.country}
+                    </h2>
+                    <p className="fs-1">{city.list[6].main.temp} °C</p>
+                  </div>
+                  <div className="mt-4">
+                    <p className="fs-2">
+                      <BiUpArrow className="text-warning" /> {city.list[6].main.temp_max} °C
+                    </p>
+                    <p className="fs-2">
+                      <BiDownArrow className="text-primary" /> {city.list[6].main.temp_min} °C
+                    </p>
+                  </div>
                 </Col>
               </Row>
 
-              <Col xs={6} className="mx-auto mt-5 mb-2">
-                <Moment className="text-center h1" format="DD-MM-YY HH:mm">
+              <Col xs={6} className="mx-auto mt-5">
+                <Moment className="text-center h1" format="HH:mm">
                   {city.list[8].dt_txt}
                 </Moment>
               </Col>
-              <Row className=" mx-auto myContainer w-50 mb-5">
-                <Col md={6} className="my-5 text-center">
-                  <img
-                    src={"http://openweathermap.org/img/w/" + city.list[8].weather[0].icon + ".png"}
-                    alt={city.list[8].weather[0].description}
-                  />
-                  <h2>
-                    {city.city.name}, {city.city.country}
-                  </h2>
-                  <p className="fs-1">{city.list[8].main.temp} °C</p>
-                </Col>
-                <Col className="mx-auto my-5 pt-4">
-                  <p className="fs-2">
-                    <BiUpArrow className="text-warning" /> {city.list[8].main.temp_max} °C
-                  </p>
-                  <p className="fs-2">
-                    <BiDownArrow className="text-primary" /> {city.list[8].main.temp_min} °C
-                  </p>
+              <Row>
+                <Col
+                  xs={11}
+                  md={6}
+                  className="my-4 text-center d-flex myContainer p-3 justify-content-around mx-auto"
+                >
+                  <div>
+                    <img
+                      src={
+                        "http://openweathermap.org/img/w/" + city.list[8].weather[0].icon + ".png"
+                      }
+                      alt={city.list[8].weather[0].description}
+                    />
+                    <h2>
+                      {city.city.name}, {city.city.country}
+                    </h2>
+                    <p className="fs-1">{city.list[8].main.temp} °C</p>
+                  </div>
+                  <div className="mt-4">
+                    <p className="fs-2">
+                      <BiUpArrow className="text-warning" /> {city.list[8].main.temp_max} °C
+                    </p>
+                    <p className="fs-2">
+                      <BiDownArrow className="text-primary" /> {city.list[8].main.temp_min} °C
+                    </p>
+                  </div>
                 </Col>
               </Row>
 
-              <Col xs={6} className="mx-auto mt-5 mb-2">
-                <Moment className="text-center h1" format="DD-MM-YY HH:mm">
+              <Col xs={6} className="mx-auto mt-5">
+                <Moment className="text-center h1" format="HH:mm">
                   {city.list[10].dt_txt}
                 </Moment>
               </Col>
-              <Row className=" mx-auto myContainer w-50 mb-5">
-                <Col md={6} className="my-5 text-center">
-                  <img
-                    src={
-                      "http://openweathermap.org/img/w/" + city.list[10].weather[0].icon + ".png"
-                    }
-                    alt={city.list[10].weather[0].description}
-                  />
-                  <h2>
-                    {city.city.name}, {city.city.country}
-                  </h2>
-                  <p className="fs-1">{city.list[10].main.temp} °C</p>
-                </Col>
-                <Col className="mx-auto my-5 pt-4">
-                  <p className="fs-2">
-                    <BiUpArrow className="text-warning" /> {city.list[10].main.temp_max} °C
-                  </p>
-                  <p className="fs-2">
-                    <BiDownArrow className="text-primary" /> {city.list[10].main.temp_min} °C
-                  </p>
+              <Row className="mb-5">
+                <Col
+                  xs={11}
+                  md={6}
+                  className="my-4 text-center d-flex myContainer p-3 justify-content-around mx-auto"
+                >
+                  <div>
+                    <img
+                      src={
+                        "http://openweathermap.org/img/w/" + city.list[10].weather[0].icon + ".png"
+                      }
+                      alt={city.list[10].weather[0].description}
+                    />
+                    <h2>
+                      {city.city.name}, {city.city.country}
+                    </h2>
+                    <p className="fs-1">{city.list[10].main.temp} °C</p>
+                  </div>
+                  <div className="mt-4">
+                    <p className="fs-2">
+                      <BiUpArrow className="text-warning" /> {city.list[10].main.temp_max} °C
+                    </p>
+                    <p className="fs-2">
+                      <BiDownArrow className="text-primary" /> {city.list[10].main.temp_min} °C
+                    </p>
+                  </div>
                 </Col>
               </Row>
             </>
