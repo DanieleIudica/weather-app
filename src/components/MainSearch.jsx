@@ -2,6 +2,8 @@ import React from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { BiUpArrow, BiDownArrow } from "react-icons/bi";
+import { WiHumidity } from "react-icons/wi";
+import { FiWind } from "react-icons/fi";
 import Error from "./Error";
 import Loading from "./Loading";
 import Moment from "react-moment";
@@ -130,7 +132,7 @@ export const MainSearch = () => {
           {show && (
             <>
               <Col xs={6} className="mx-auto mt-5 mb-2">
-                <Moment className="text-center h1" format="DD-MM-YY HH:mm">
+                <Moment className="text-center fs-3" format="DD-MM-YY HH:mm">
                   {city.list[6].dt_txt}
                 </Moment>
               </Col>
@@ -154,17 +156,17 @@ export const MainSearch = () => {
                   </div>
                   <div className="mt-4">
                     <p className="fs-2">
-                      <BiUpArrow className="text-warning" /> {city.list[6].main.temp_max} °C
+                      <WiHumidity className="text-primary" /> {city.list[6].main.humidity} %
                     </p>
                     <p className="fs-2">
-                      <BiDownArrow className="text-primary" /> {city.list[6].main.temp_min} °C
+                      <FiWind className="text-primary" /> {city.list[6].wind.speed} Km/h
                     </p>
                   </div>
                 </Col>
               </Row>
 
               <Col xs={6} className="mx-auto mt-5">
-                <Moment className="text-center h1" format="HH:mm">
+                <Moment className="text-center fs-3" format="DD-MM-YY HH:mm">
                   {city.list[8].dt_txt}
                 </Moment>
               </Col>
@@ -188,17 +190,17 @@ export const MainSearch = () => {
                   </div>
                   <div className="mt-4">
                     <p className="fs-2">
-                      <BiUpArrow className="text-warning" /> {city.list[8].main.temp_max} °C
+                      <WiHumidity className="text-primary" /> {city.list[8].main.humidity} %
                     </p>
                     <p className="fs-2">
-                      <BiDownArrow className="text-primary" /> {city.list[8].main.temp_min} °C
+                      <FiWind className="text-primary" /> {city.list[8].wind.speed} Km/h
                     </p>
                   </div>
                 </Col>
               </Row>
 
               <Col xs={6} className="mx-auto mt-5">
-                <Moment className="text-center h1" format="HH:mm">
+                <Moment className="text-center fs-3" format="DD-MM-YY HH:mm">
                   {city.list[10].dt_txt}
                 </Moment>
               </Col>
@@ -222,10 +224,10 @@ export const MainSearch = () => {
                   </div>
                   <div className="mt-4">
                     <p className="fs-2">
-                      <BiUpArrow className="text-warning" /> {city.list[10].main.temp_max} °C
+                      <WiHumidity className="text-primary" /> {city.list[10].main.humidity} %
                     </p>
                     <p className="fs-2">
-                      <BiDownArrow className="text-primary" /> {city.list[10].main.temp_min} °C
+                      <FiWind className="text-primary" /> {city.list[10].wind.speed} Km/h
                     </p>
                   </div>
                 </Col>
