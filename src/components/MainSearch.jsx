@@ -10,12 +10,11 @@ import Moment from "react-moment";
 
 export const MainSearch = () => {
   let [query, setQuery] = useState("");
-  let [city, setCity] = useState(null);
+  let [WeatherData, setWeatherData] = useState(null);
   let [loading, setLoading] = useState(true);
   let [error, setError] = useState(false);
   let [show, setShow] = useState(false);
   const baseEndpoint = `https://api.openweathermap.org/data/2.5/forecast?q=`;
-  //   const baseEndpoint = `https://api.openweathermap.org/data/2.5/weather?q=`;
 
   const handleChange = (e) => {
     setQuery(e.target.value);
@@ -29,7 +28,7 @@ export const MainSearch = () => {
       if (response.ok) {
         let data = await response.json();
         console.log(data);
-        setCity(data);
+        setWeatherData(data);
         setLoading(false);
         setError(false);
       } else {
@@ -58,7 +57,7 @@ export const MainSearch = () => {
       );
       if (response.ok) {
         let iData = await response.json();
-        setCity(iData);
+        setWeatherData(iData);
         console.log(iData);
       } else {
         alert("Error fetching results");
@@ -86,7 +85,7 @@ export const MainSearch = () => {
       </Col>
       {loading && <Loading />}
       {error && <Error />}
-      {city && (
+      {WeatherData && (
         <>
           <Row>
             <Col
@@ -96,20 +95,20 @@ export const MainSearch = () => {
             >
               <div>
                 <img
-                  src={"http://openweathermap.org/img/w/" + city.list[0].weather[0].icon + ".png"}
-                  alt={city.list[0].weather[0].description}
+                  src={"http://openweathermap.org/img/w/" + WeatherData.list[0].weather[0].icon + ".png"}
+                  alt={WeatherData.list[0].weather[0].description}
                 />
                 <h2>
-                  {city.city.name}, {city.city.country}
+                  {WeatherData.city.name}, {WeatherData.city.country}
                 </h2>
-                <p className="fs-1">{city.list[0].main.temp} °C</p>
+                <p className="fs-1">{WeatherData.list[0].main.temp} °C</p>
               </div>
               <div className="mt-4">
                 <p className="fs-2">
-                  <BiUpArrow className="text-warning" /> {city.list[0].main.temp_max} °C
+                  <BiUpArrow className="text-warning" /> {WeatherData.list[0].main.temp_max} °C
                 </p>
                 <p className="fs-2">
-                  <BiDownArrow className="text-primary" /> {city.list[0].main.temp_min} °C
+                  <BiDownArrow className="text-primary" /> {WeatherData.list[0].main.temp_min} °C
                 </p>
               </div>
             </Col>
@@ -117,11 +116,11 @@ export const MainSearch = () => {
           <Row className="justify-content-center text-center my-5">
             <Col xs={11} md={6} className="myContainer p-3">
               <h3 className="my-4">More info:</h3>
-              <p className="fs-5 ">Weather: {city.list[0].weather[0].description}</p>
-              <p className="fs-5 ">Wind speed: {city.list[0].wind.speed} Km/h</p>
-              <p className="fs-5">Feels like: {city.list[0].main.feels_like} °C</p>
-              <p className="fs-5">Humidity: {city.list[0].main.humidity} %</p>
-              <p className="fs-5">Pressure: {city.list[0].main.pressure} hPa</p>
+              <p className="fs-5 ">Weather: {WeatherData.list[0].weather[0].description}</p>
+              <p className="fs-5 ">Wind speed: {WeatherData.list[0].wind.speed} Km/h</p>
+              <p className="fs-5">Feels like: {WeatherData.list[0].main.feels_like} °C</p>
+              <p className="fs-5">Humidity: {WeatherData.list[0].main.humidity} %</p>
+              <p className="fs-5">Pressure: {WeatherData.list[0].main.pressure} hPa</p>
             </Col>
           </Row>
           <Col xs={6} className="mx-auto my-5 text-center">
@@ -133,7 +132,7 @@ export const MainSearch = () => {
             <>
               <Col xs={6} className="mx-auto mt-5 mb-2">
                 <Moment className="text-center fs-3" format="DD-MM-YY HH:mm">
-                  {city.list[6].dt_txt}
+                  {WeatherData.list[6].dt_txt}
                 </Moment>
               </Col>
               <Row>
@@ -145,21 +144,21 @@ export const MainSearch = () => {
                   <div>
                     <img
                       src={
-                        "http://openweathermap.org/img/w/" + city.list[6].weather[0].icon + ".png"
+                        "http://openweathermap.org/img/w/" + WeatherData.list[6].weather[0].icon + ".png"
                       }
-                      alt={city.list[6].weather[0].description}
+                      alt={WeatherData.list[6].weather[0].description}
                     />
                     <h2>
-                      {city.city.name}, {city.city.country}
+                      {WeatherData.city.name}, {WeatherData.city.country}
                     </h2>
-                    <p className="fs-1">{city.list[6].main.temp} °C</p>
+                    <p className="fs-1">{WeatherData.list[6].main.temp} °C</p>
                   </div>
                   <div className="mt-4">
                     <p className="fs-2">
-                      <WiHumidity className="text-primary" /> {city.list[6].main.humidity} %
+                      <WiHumidity className="text-primary" /> {WeatherData.list[6].main.humidity} %
                     </p>
                     <p className="fs-2">
-                      <FiWind className="text-primary" /> {city.list[6].wind.speed} Km/h
+                      <FiWind className="text-primary" /> {WeatherData.list[6].wind.speed} Km/h
                     </p>
                   </div>
                 </Col>
@@ -167,7 +166,7 @@ export const MainSearch = () => {
 
               <Col xs={6} className="mx-auto mt-5">
                 <Moment className="text-center fs-3" format="DD-MM-YY HH:mm">
-                  {city.list[8].dt_txt}
+                  {WeatherData.list[8].dt_txt}
                 </Moment>
               </Col>
               <Row>
@@ -179,21 +178,21 @@ export const MainSearch = () => {
                   <div>
                     <img
                       src={
-                        "http://openweathermap.org/img/w/" + city.list[8].weather[0].icon + ".png"
+                        "http://openweathermap.org/img/w/" + WeatherData.list[8].weather[0].icon + ".png"
                       }
-                      alt={city.list[8].weather[0].description}
+                      alt={WeatherData.list[8].weather[0].description}
                     />
                     <h2>
-                      {city.city.name}, {city.city.country}
+                      {WeatherData.city.name}, {WeatherData.city.country}
                     </h2>
-                    <p className="fs-1">{city.list[8].main.temp} °C</p>
+                    <p className="fs-1">{WeatherData.list[8].main.temp} °C</p>
                   </div>
                   <div className="mt-4">
                     <p className="fs-2">
-                      <WiHumidity className="text-primary" /> {city.list[8].main.humidity} %
+                      <WiHumidity className="text-primary" /> {WeatherData.list[8].main.humidity} %
                     </p>
                     <p className="fs-2">
-                      <FiWind className="text-primary" /> {city.list[8].wind.speed} Km/h
+                      <FiWind className="text-primary" /> {WeatherData.list[8].wind.speed} Km/h
                     </p>
                   </div>
                 </Col>
@@ -201,7 +200,7 @@ export const MainSearch = () => {
 
               <Col xs={6} className="mx-auto mt-5">
                 <Moment className="text-center fs-3" format="DD-MM-YY HH:mm">
-                  {city.list[10].dt_txt}
+                  {WeatherData.list[10].dt_txt}
                 </Moment>
               </Col>
               <Row className="mb-5">
@@ -213,21 +212,21 @@ export const MainSearch = () => {
                   <div>
                     <img
                       src={
-                        "http://openweathermap.org/img/w/" + city.list[10].weather[0].icon + ".png"
+                        "http://openweathermap.org/img/w/" + WeatherData.list[10].weather[0].icon + ".png"
                       }
-                      alt={city.list[10].weather[0].description}
+                      alt={WeatherData.list[10].weather[0].description}
                     />
                     <h2>
-                      {city.city.name}, {city.city.country}
+                      {WeatherData.city.name}, {WeatherData.city.country}
                     </h2>
-                    <p className="fs-1">{city.list[10].main.temp} °C</p>
+                    <p className="fs-1">{WeatherData.list[10].main.temp} °C</p>
                   </div>
                   <div className="mt-4">
                     <p className="fs-2">
-                      <WiHumidity className="text-primary" /> {city.list[10].main.humidity} %
+                      <WiHumidity className="text-primary" /> {WeatherData.list[10].main.humidity} %
                     </p>
                     <p className="fs-2">
-                      <FiWind className="text-primary" /> {city.list[10].wind.speed} Km/h
+                      <FiWind className="text-primary" /> {WeatherData.list[10].wind.speed} Km/h
                     </p>
                   </div>
                 </Col>
